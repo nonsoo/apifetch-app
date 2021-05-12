@@ -1,6 +1,9 @@
 import "./App.css";
+
 import axios from "axios";
 import { useState, useEffect } from "react";
+
+import PostsComp from "./Components/Posts";
 
 function App() {
   const [posts, setPosts] = useState();
@@ -15,9 +18,14 @@ function App() {
     <div className="App">
       <p className="name">The posts are going to show up here</p>
       {posts && (
-        <div className="posts">
+        <div className="postsContainer">
           {posts.map((post) => (
-            <p>the is the title of the post: {post.title}</p>
+            <PostsComp
+              Title={post.title}
+              Body={post.body}
+              Id={post.id}
+              UserId={post.userId}
+            />
           ))}
         </div>
       )}
